@@ -20,7 +20,12 @@
                               <Font size="20.0" />
                            </font>
                         </Text>
-                        <Text fx:id="contentText" layoutX="53.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="572.5366668701172" />
+                        <Text fx:id="authorText" layoutX="53.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="198.3999481201172">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="contentText" layoutX="46.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="572.5366668701172" />
                      </children>
                   </AnchorPane>
                </content>

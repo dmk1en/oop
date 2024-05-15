@@ -65,4 +65,11 @@ public class Controller {
         changeTo("/resources/fxml/search.fxml");
     }
 
+    @FXML
+    public void changeToTrend() throws IOException {
+        changeTo("/resources/fxml/trend.fxml");
+        //System.out.println("c");
+    }
+    
+
 }

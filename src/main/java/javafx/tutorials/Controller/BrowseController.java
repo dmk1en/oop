@@ -1,6 +1,7 @@
 package javafx.tutorials.Controller;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -38,7 +39,7 @@ public class BrowseController implements Initializable{
     @FXML
     private GridPane gridPane;
 
-    private int currentArticleId = 0;
+    private int currentArticleId = 1;
 
     private List<String> possibleTitle = new ArrayList<>();
     private List<String> possibleTag = new ArrayList<>();
@@ -51,8 +52,11 @@ public class BrowseController implements Initializable{
                 Iterable<CSVRecord> records = CSVFormat.DEFAULT.parse(in);
                 for (CSVRecord record : records) {
                     possibleTitle.add(record.get(1));
+
                     possibleAuthor.add(record.get(2));
-                    possibleTag.add(record.get(4));
+                    if (record.size() > 4){
+                        possibleTag.add(record.get(4));
+                    }
                 }
                 in.close();
                 loadMore();
@@ -97,12 +101,32 @@ public class BrowseController implements Initializable{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/view.fxml"));
             Parent newContent = loader.load();
             ViewController controller = loader.getController();
-            controller.setText(title);
+            String author =  getAuthorByTitle(title);
+            controller.setText(title,author);
             ObservableList<Node> children = newContent.getChildrenUnmodifiable();
             HBox1.getChildren().setAll(children);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+
+    private String getAuthorByTitle(String title) {
+        try {
+            InputStreamReader in = new InputStreamReader(new FileInputStream("article.csv"), StandardCharsets.UTF_8);
+            Iterable<CSVRecord> records = CSVFormat.DEFAULT.parse(in);
+            for (CSVRecord record : records) {
+                if (record.get(1).contains(title)) {
+                    return record.get(2); // return the author
+                }
+            }
+            return null; // return null if no author found for the title
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null; // return null if an exception occurs
     }
 
 }

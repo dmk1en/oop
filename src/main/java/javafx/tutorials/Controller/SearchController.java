@@ -65,9 +65,13 @@ public class SearchController implements Initializable{
                     possibleAuthor.add(record.get(2));
                 }
 
-                if (!possibleTag.contains(record.get(4))){
-                    possibleTag.add(record.get(4));
+                if (record.size() > 4){
+                    if (!possibleTag.contains(record.get(4))){
+                        possibleTag.add(record.get(4));
+                    }
                 }
+
+                
 
             }
         } catch (FileNotFoundException e) {
@@ -191,10 +195,12 @@ public class SearchController implements Initializable{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/view.fxml"));
             Parent newContent = loader.load();
             ViewController controller = loader.getController();
-            controller.setText(title);
+
+            String author =  getAuthorByTitle(title);
+
+            controller.setText(title,author);
             ObservableList<Node> children = newContent.getChildrenUnmodifiable();
             HBox1.getChildren().setAll(children);
-            System.out.println(gridPane.getParent()==null);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -226,9 +232,13 @@ public class SearchController implements Initializable{
             Iterable<CSVRecord> records = CSVFormat.DEFAULT.parse(in);
             List<String> titles = new ArrayList<>();
             for (CSVRecord record : records) {
-                if (record.get(4).contains(tag)) {
-                    titles.add(record.get(1)); // return the title
+                if (record.size() > 4){
+                    if (possibleTag.contains(record.get(4))){
+                        titles.add(record.get(1));
+                    }
                 }
+                
+                
             }
             return titles;
         } catch (FileNotFoundException e) {
@@ -288,6 +298,24 @@ public class SearchController implements Initializable{
     }
 
 
-
+    private String getAuthorByTitle(String title) {
+        try {
+            InputStreamReader in = new InputStreamReader(new FileInputStream("article.csv"), StandardCharsets.UTF_8);
+            Iterable<CSVRecord> records = CSVFormat.DEFAULT.parse(in);
+            for (CSVRecord record : records) {
+                if (record.get(1).contains(title)) {
+                    return record.get(2); // return the author
+                }
+            }
+            return null; // return null if no author found for the title
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null; // return null if an exception occurs
+    }
+        
+    
 
 }

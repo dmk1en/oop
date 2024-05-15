@@ -2,15 +2,12 @@ package javafx.tutorials.Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import org.checkerframework.checker.units.qual.t;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
 
 public class ViewController implements Initializable {
-    private String title;
+
 
 
     @FXML
@@ -18,6 +15,9 @@ public class ViewController implements Initializable {
 
     @FXML
     private Text contentText;
+
+    @FXML
+    private Text authorText;
 
 
     @Override
@@ -28,10 +28,11 @@ public class ViewController implements Initializable {
         //contentText.setText(data);
     }
 
-    public void setText(String text) { 
-        System.out.println(text);
-        titleText.setText(text);
-        String data = new GetContent().getContentByTitle(text);
+    public void setText(String title,String author) { 
+        
+        titleText.setText(title);
+        authorText.setText(author);
+        String data = new GetContent().getContentByTitle(title);
         contentText.setText(data);
     }
 
