@@ -31,11 +31,11 @@ public class Maturity {
                     String[] words = line.split(" ");
 
                     for (String word : words) {
-                        wordFrequency.put(word, wordFrequency.getOrDefault(word, 0) + 1);
+                        String lowerCaseWord = word.toLowerCase();
+                        wordFrequency.put(lowerCaseWord, wordFrequency.getOrDefault(lowerCaseWord, 0) + 1);
                     }
                 }
             }
-
         }
 
         List<Map.Entry<String, Integer>> entryList = new ArrayList<>(wordFrequency.entrySet());

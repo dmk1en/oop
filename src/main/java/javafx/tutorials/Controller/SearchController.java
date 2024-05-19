@@ -8,6 +8,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import org.apache.commons.csv.*;
 
@@ -50,6 +51,7 @@ public class SearchController implements Initializable{
     private List<String> possibleTitle = new ArrayList<>();
     private List<String> possibleTag = new ArrayList<>();
     private List<String> possibleAuthor = new ArrayList<>();
+    private List<String> possibleKeyword = new ArrayList<>();
 
 
 
@@ -70,10 +72,15 @@ public class SearchController implements Initializable{
                         possibleTag.add(record.get(4));
                     }
                 }
-
+            }
+            
+            List<Map.Entry<String, Integer>> keyWordList = new Maturity().getWordFrequency();
+            for (Map.Entry<String, Integer> entry : keyWordList) {
+                possibleKeyword.add(entry.getKey());
+            }
                 
 
-            }
+            
         } catch (FileNotFoundException e) {
             // Handle file not found exception
             e.printStackTrace();
@@ -85,7 +92,7 @@ public class SearchController implements Initializable{
         TextFields.bindAutoCompletion(titleInput, possibleTitle);
         TextFields.bindAutoCompletion(tagInput, possibleTag);
         TextFields.bindAutoCompletion(authorInput, possibleAuthor);
-
+        TextFields.bindAutoCompletion(keywordInput, possibleKeyword);
     }
 
     public void searchButtonClicked(){
