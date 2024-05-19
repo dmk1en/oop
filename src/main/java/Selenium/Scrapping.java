@@ -74,7 +74,7 @@ public class Scrapping {
 
             // Write data to CSV file
             File csvFile = new File("article.csv");
-            try (PrintWriter printWriter = new PrintWriter(csvFile, "UTF-8")) {
+            try (PrintWriter printWriter = new PrintWriter(csvFile, StandardCharsets.UTF_8)) {
                 printWriter.write('\ufeff');
                 List<String> row1 = new ArrayList<>();
                 row1.add("\"" + "Link" + "\"");
@@ -90,8 +90,8 @@ public class Scrapping {
                     row.add("\"" + quote.getTitle() + "\"");
                     row.add("\"" + quote.getAuthor() + "\"");
                     row.add("\"" + quote.getTime() + "\"");
-                    if (quote.getTag() != null){
-                        row.add("\"" + quote.getTag() + "\"");
+                    if (quote.getTag() != null) {
+                    	row.add("\"" + quote.getTag() + "\"");
                     }
                     printWriter.println(String.join(",", row));
                 }
@@ -100,6 +100,7 @@ public class Scrapping {
             e.printStackTrace();
         }
     }
+    
 
     static class Article {
         private String title;
@@ -144,3 +145,5 @@ public class Scrapping {
         }
     }
 }
+    
+

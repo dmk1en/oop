@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import org.checkerframework.checker.units.qual.t;
-
 public class TrendController implements Initializable {
     @FXML
     private Text top1;

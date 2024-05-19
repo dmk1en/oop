@@ -1,6 +1,6 @@
 package Selenium;
 
-import com.mongodb.ConnectionString;
+
 import com.mongodb.MongoClientSettings;
 import com.mongodb.MongoException;
 import com.mongodb.client.MongoClient;
@@ -9,7 +9,10 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoIterable;
-import org.bson.Document;
+
+import Selenium.Scrapping.Article;
+import com.mongodb.ConnectionString;
+
 
 
 
@@ -33,6 +36,8 @@ public class MongoDb {
                 for (String dbName : databaseNames) {
                     System.out.println(dbName);
                 }
+                
+                
             } catch (MongoException e) {
                 e.printStackTrace();
             }

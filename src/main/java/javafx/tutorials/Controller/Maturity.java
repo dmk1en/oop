@@ -1,8 +1,7 @@
 package javafx.tutorials.Controller;
 
-import java.io.BufferedReader;
+
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
@@ -12,7 +11,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
@@ -55,47 +53,4 @@ public class Maturity {
         }
         return null;
     }
-
-
-    // public static void main(String[] args) throws IOException {
-    //     try (InputStreamReader in = new InputStreamReader(new FileInputStream("article.csv"), StandardCharsets.UTF_8);) {
-    //         Iterable<CSVRecord> records = CSVFormat.DEFAULT.parse(in);
-
-    //         Map<String, Integer> wordFrequency = new HashMap<>();
-
-    //         for (CSVRecord record : records) {
-    //             if (record.size() > 4){
-    //             String line = record.get(4);
-    //             if (!line.equals("null")) {
-
-    //                 String[] words = line.split(" ");
-
-    //                 for (String word : words) {
-    //                     wordFrequency.put(word, wordFrequency.getOrDefault(word, 0) + 1);
-    //                 }
-    //             }
-    //         }
-
-    //     }
-
-    //     List<Map.Entry<String, Integer>> entryList = new ArrayList<>(wordFrequency.entrySet());
-    //     Collections.sort(entryList, new Comparator<Map.Entry<String, Integer>>() {
-    //         @Override
-    //         public int compare(Map.Entry<String, Integer> entry1, Map.Entry<String, Integer> entry2) {
-    //             return entry2.getValue().compareTo(entry1.getValue()); // Đảo ngược so sánh
-    //         }
-    //     });
-        
-    //     for (Map.Entry<String, Integer> entry : entryList) {
-    //         System.out.println(entry.getKey() + " : " + entry.getValue());
-    //     }
-
-    //     } catch (IOException e) {
-    //         e.printStackTrace();
-    //     }
-
-    // }
-
-
-
 }

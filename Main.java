@@ -22,7 +22,7 @@ public class Main {
         try {
             // Tìm phần tử nút "Read More"
         	JavascriptExecutor js = (JavascriptExecutor) driver;
-        	for (int i = 0 ; i < 3 ;i++) {
+        	for (int i = 0 ; i < 10 ;i++) {
 	            js.executeScript("document.querySelector('.button-more').click();");
 	            Thread.sleep(5000);
         	}
