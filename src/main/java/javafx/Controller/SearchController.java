@@ -243,9 +243,7 @@ public class SearchController implements Initializable{
                     if (possibleTag.contains(record.get(4))){
                         titles.add(record.get(1));
                     }
-                }
-                
-                
+                }   
             }
             return titles;
         } catch (FileNotFoundException e) {
