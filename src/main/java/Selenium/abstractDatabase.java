@@ -1,6 +1,6 @@
 package Selenium;
 
-public class abstractDatabase {
+public abstract class abstractDatabase {
     private String connectionString;
 
 
