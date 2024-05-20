@@ -19,7 +19,5 @@ public abstract class abstractDatabase {
     }
 
 
-    public void connect(){
-
-    }
+    public abstract void connect();
 }

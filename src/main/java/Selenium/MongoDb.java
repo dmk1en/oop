@@ -7,10 +7,8 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
-import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoIterable;
 
-import Selenium.Scrapping.Article;
 import com.mongodb.ConnectionString;
 
 
