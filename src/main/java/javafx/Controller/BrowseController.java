@@ -26,7 +26,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.scene.layout.VBox;
 
-public class BrowseController implements Initializable{
+public class BrowseController extends abstractController{
     @FXML
     private Button loadMoreButton;
 
@@ -96,7 +96,9 @@ public class BrowseController implements Initializable{
         
     }
 
+    @Override
     public void changeToView(String title) {
+        
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/view.fxml"));
             Parent newContent = loader.load();

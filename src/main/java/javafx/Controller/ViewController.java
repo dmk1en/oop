@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
 
-public class ViewController implements Initializable {
+public class ViewController extends abstractController {
 
 
 

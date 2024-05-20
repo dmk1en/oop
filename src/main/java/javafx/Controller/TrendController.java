@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class TrendController implements Initializable {
+public class TrendController extends abstractController {
     @FXML
     private Text top1;
 
@@ -24,7 +24,6 @@ public class TrendController implements Initializable {
     @FXML
     private Text top5;
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ShowTrend ShowTrend = new ShowTrend();
@@ -34,11 +33,6 @@ public class TrendController implements Initializable {
         top3.setText(entryList.get(2).getKey() + " : " + entryList.get(2).getValue());
         top4.setText(entryList.get(3).getKey() + " : " + entryList.get(3).getValue());
         top5.setText(entryList.get(4).getKey() + " : " + entryList.get(4).getValue());
-
-
     }
-    
-
-
     
 }

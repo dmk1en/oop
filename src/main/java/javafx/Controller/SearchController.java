@@ -27,7 +27,7 @@ import javafx.scene.text.Text;
 import org.controlsfx.control.textfield.TextFields;
 
 
-public class SearchController implements Initializable{
+public class SearchController extends abstractController{
     @FXML
     private TextField titleInput;
     @FXML
@@ -197,7 +197,8 @@ public class SearchController implements Initializable{
         
     }
 
-    private void changeToView(String title) {
+    @Override
+    public void changeToView(String title) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/view.fxml"));
             Parent newContent = loader.load();

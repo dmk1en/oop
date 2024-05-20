@@ -16,8 +16,14 @@ import com.mongodb.ConnectionString;
 
 
 
-public class MongoDb {
+public class MongoDb extends abstractDatabase{
     public static void main(String[] args) {
+        MongoDb db = new MongoDb();
+        db.connect();
+    }
+
+    @Override
+    public void connect(){
         String connectionString = "mongodb+srv://tuannamle256:k3lGLGcBHFvYgto9@phannam.t93kh0q.mongodb.net/?retryWrites=true&w=majority&appName=PhanNam";
         MongoClientSettings settings = MongoClientSettings.builder()
                 .applyConnectionString(new ConnectionString(connectionString))
