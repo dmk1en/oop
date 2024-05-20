@@ -1,4 +1,4 @@
-package javafx.tutorials.Controller;
+package javafx.Controller;
 
 import org.bson.Document;
 import com.mongodb.ConnectionString;
@@ -8,26 +8,9 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.BasicDBObject;
-import org.bson.types.ObjectId;
-import com.mongodb.client.model.Filters;
-
-import oracle.net.aso.l;
-
 import com.mongodb.client.FindIterable;
-import com.mongodb.MongoClientSettings;
-import com.mongodb.ConnectionString;
-import org.bson.conversions.Bson;
-import com.mongodb.client.model.Filters;
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoCursor;
-import org.bson.Document;
-import org.bson.types.ObjectId;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.regex.Pattern;
-
 
 
 public class GetContent {

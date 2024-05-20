@@ -1,4 +1,4 @@
-package javafx.tutorials.Controller;
+package javafx.Controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;

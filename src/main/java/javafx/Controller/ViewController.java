@@ -1,4 +1,4 @@
-package javafx.tutorials.Controller;
+package javafx.Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
