@@ -15,7 +15,7 @@ import java.util.Map;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
-public class Maturity {
+public class ShowTrend {
 
     public List<Map.Entry<String, Integer>> getWordFrequency() {
         try (InputStreamReader in = new InputStreamReader(new FileInputStream("article.csv"), StandardCharsets.UTF_8);) {

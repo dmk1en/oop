@@ -74,7 +74,7 @@ public class SearchController implements Initializable{
                 }
             }
             
-            List<Map.Entry<String, Integer>> keyWordList = new Maturity().getWordFrequency();
+            List<Map.Entry<String, Integer>> keyWordList = new ShowTrend().getWordFrequency();
             for (Map.Entry<String, Integer> entry : keyWordList) {
                 possibleKeyword.add(entry.getKey());
             }

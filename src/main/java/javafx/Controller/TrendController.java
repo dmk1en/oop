@@ -27,13 +27,13 @@ public class TrendController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Maturity maturity = new Maturity();
-        List<Map.Entry<String, Integer>> entryList = maturity.getWordFrequency();
-        top1.setText(entryList.get(0).getKey());
-        top2.setText(entryList.get(1).getKey());
-        top3.setText(entryList.get(2).getKey());
-        top4.setText(entryList.get(3).getKey());
-        top5.setText(entryList.get(4).getKey());
+        ShowTrend ShowTrend = new ShowTrend();
+        List<Map.Entry<String, Integer>> entryList = ShowTrend.getWordFrequency();
+        top1.setText(entryList.get(0).getKey() + " : " + entryList.get(0).getValue());
+        top2.setText(entryList.get(1).getKey() + " : " + entryList.get(1).getValue());
+        top3.setText(entryList.get(2).getKey() + " : " + entryList.get(2).getValue());
+        top4.setText(entryList.get(3).getKey() + " : " + entryList.get(3).getValue());
+        top5.setText(entryList.get(4).getKey() + " : " + entryList.get(4).getValue());
 
 
     }
