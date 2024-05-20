@@ -1,14 +1,9 @@
 package javafx.Controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
 
-public class ViewController implements Initializable {
-
-
+public class ViewController {
 
     @FXML
     private Text titleText;
@@ -18,15 +13,6 @@ public class ViewController implements Initializable {
 
     @FXML
     private Text authorText;
-
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources){
-        //String data = new GetContent().getContentByTitle(titleText.getText());
-        //System.out.println(data);
-
-        //contentText.setText(data);
-    }
 
     public void setText(String title,String author) { 
         

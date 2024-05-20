@@ -42,8 +42,6 @@ public class BrowseController implements Initializable{
     private int currentArticleId = 1;
 
     private List<String> possibleTitle = new ArrayList<>();
-    private List<String> possibleTag = new ArrayList<>();
-    private List<String> possibleAuthor = new ArrayList<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) { 
@@ -52,11 +50,6 @@ public class BrowseController implements Initializable{
                 Iterable<CSVRecord> records = CSVFormat.DEFAULT.parse(in);
                 for (CSVRecord record : records) {
                     possibleTitle.add(record.get(1));
-
-                    possibleAuthor.add(record.get(2));
-                    if (record.size() > 4){
-                        possibleTag.add(record.get(4));
-                    }
                 }
                 in.close();
                 loadMore();
@@ -69,7 +62,7 @@ public class BrowseController implements Initializable{
     }
 
     public void loadMore() {
-        for (int i = currentArticleId; i < currentArticleId + 10; i++) {
+        for (int i = currentArticleId; i < currentArticleId + 20; i++) {
             String title = possibleTitle.get(i);
             Text text = new Text(title);
             text.setWrappingWidth(600);
@@ -92,7 +85,7 @@ public class BrowseController implements Initializable{
             gridPane.add(text, 1, i);
             gridPane.add(num, 0, i); 
         }
-        currentArticleId += 10;
+        currentArticleId += 20;
         
     }
 
@@ -110,7 +103,6 @@ public class BrowseController implements Initializable{
         }
     }
     
-
     private String getAuthorByTitle(String title) {
         try {
             InputStreamReader in = new InputStreamReader(new FileInputStream("article.csv"), StandardCharsets.UTF_8);
