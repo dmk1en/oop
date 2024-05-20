@@ -11,14 +11,18 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.FindIterable;
 import java.util.ArrayList;
 import java.util.List;
+import Selenium.*;
 
 
-public class GetContent {
-	public List<List<String>> getDocumentByFieldName(String keyword) {
-		 String connectionString = "mongodb+srv://tuannamle256:k3lGLGcBHFvYgto9@phannam.t93kh0q.mongodb.net/?retryWrites=true&w=majority&appName=PhanNam";
-         MongoClientSettings settings = MongoClientSettings.builder()
-                 .applyConnectionString(new ConnectionString(connectionString))
-                 .build();
+public class GetContent extends MongoDb{
+	public GetContent(String connectionString) {
+        super(connectionString);
+        //TODO Auto-generated constructor stub
+    }
+
+
+    public List<List<String>> getDocumentByFieldName(String keyword) {
+        MongoClientSettings settings = this.getSettings();
         try (MongoClient mongoClient = MongoClients.create(settings)) {
             MongoDatabase database = mongoClient.getDatabase("data");
             MongoCollection<Document> collection = database.getCollection("mycollection");
@@ -49,10 +53,7 @@ public class GetContent {
 
     
     public String getContentByTitle(String title){
-        String connectionString = "mongodb+srv://tuannamle256:k3lGLGcBHFvYgto9@phannam.t93kh0q.mongodb.net/?retryWrites=true&w=majority&appName=PhanNam";
-        MongoClientSettings settings = MongoClientSettings.builder()
-                .applyConnectionString(new ConnectionString(connectionString))
-                .build();
+        MongoClientSettings settings = this.getSettings();
        try (MongoClient mongoClient = MongoClients.create(settings)) {
            MongoDatabase database = mongoClient.getDatabase("data");
            MongoCollection<Document> collection = database.getCollection("mycollection");
@@ -84,7 +85,7 @@ public class GetContent {
     }
 
     public static void main(String[] args) {
-    	String getContent = new GetContent().getContentByTitle("Solana Price Prediction as CEO Yakovenko Previews Post-Firedancer Era – Is SOL Set to Lead in Web3?");
+    	String getContent = new GetContent("mongodb+srv://tuannamle256:k3lGLGcBHFvYgto9@phannam.t93kh0q.mongodb.net/?retryWrites=true&w=majority&appName=PhanNam").getContentByTitle("Solana Price Prediction as CEO Yakovenko Previews Post-Firedancer Era – Is SOL Set to Lead in Web3?");
         System.out.println(getContent);
     }
 

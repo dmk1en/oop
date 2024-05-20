@@ -32,7 +32,7 @@ public class ViewController extends abstractController {
         
         titleText.setText(title);
         authorText.setText(author);
-        String data = new GetContent().getContentByTitle(title);
+        String data = new GetContent(this.getConnectionString()).getContentByTitle(title);
         contentText.setText(data);
     }
 

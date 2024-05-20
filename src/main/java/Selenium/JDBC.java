@@ -4,13 +4,18 @@ package Selenium;
 import java.sql.*;
 
 public class JDBC extends abstractDatabase{
+   public JDBC(String connectionString) {
+      super(connectionString);
+      //TODO Auto-generated constructor stub
+   }
+
    static final String DB_URL = "jdbc:mysql://localhost/TUTORIALSPOINT";
    static final String USER = "guest";
    static final String PASS = "guest123";
    static final String QUERY = "SELECT id, first, last, age FROM Employees";
 
    public static void main(String[] args) {
-      JDBC db = new JDBC();
+      JDBC db = new JDBC(DB_URL);
       db.connect();
    }
 

@@ -294,7 +294,7 @@ public class SearchController extends abstractController{
     }
     
     private List<String> getTitleByKeyword(String keyword){
-        List<List<String>> titleanddata = new GetContent().getDocumentByFieldName(keyword);
+        List<List<String>> titleanddata = new GetContent(this.getConnectionString()).getDocumentByFieldName(keyword);
         List<String> titles = new ArrayList<>();
         for (List<String> title : titleanddata){
             titles.add(title.get(0));

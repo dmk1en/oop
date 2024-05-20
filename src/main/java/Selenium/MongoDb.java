@@ -17,14 +17,28 @@ import com.mongodb.ConnectionString;
 
 
 public class MongoDb extends abstractDatabase{
+    private MongoClientSettings settings;
+
+    public MongoClientSettings getSettings() {
+        return settings;
+    }
+
+    public void setSettings(MongoClientSettings settings) {
+        this.settings = settings;
+    }
+
+    public MongoDb(String connectionString) {
+        super(connectionString);
+        this.connect();
+    }
+
     public static void main(String[] args) {
-        MongoDb db = new MongoDb();
-        db.connect();
+        MongoDb db = new MongoDb("mongodb+srv://tuannamle256:k3lGLGcBHFvYgto9@phannam.t93kh0q.mongodb.net/?retryWrites=true&w=majority&appName=PhanNam");
     }
 
     @Override
     public void connect(){
-        String connectionString = "mongodb+srv://tuannamle256:k3lGLGcBHFvYgto9@phannam.t93kh0q.mongodb.net/?retryWrites=true&w=majority&appName=PhanNam";
+        String connectionString = this.getConnectionString();
         MongoClientSettings settings = MongoClientSettings.builder()
                 .applyConnectionString(new ConnectionString(connectionString))
                 .build();
@@ -48,5 +62,6 @@ public class MongoDb extends abstractDatabase{
                 e.printStackTrace();
             }
         }
+        this.setSettings(settings);
     }
 }

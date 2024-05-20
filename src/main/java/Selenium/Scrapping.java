@@ -20,14 +20,22 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
-public class Scrapping {
-    public static void main(String[] args) {
-        try {
-            String connectionString = "mongodb+srv://tuannamle256:k3lGLGcBHFvYgto9@phannam.t93kh0q.mongodb.net/?retryWrites=true&w=majority&appName=PhanNam";
-            MongoClientSettings settings = MongoClientSettings.builder()
-                    .applyConnectionString(new ConnectionString(connectionString))
-                    .build();
+public class Scrapping extends MongoDb{
+    public Scrapping(String connectionString) {
+        super(connectionString);
+        //TODO Auto-generated constructor stub
+    }
 
+
+    public static void main(String[] args) {
+        Scrapping tmp = new Scrapping("mongodb+srv://tuannamle256:k3lGLGcBHFvYgto9@phannam.t93kh0q.mongodb.net/?retryWrites=true&w=majority&appName=PhanNam");
+        tmp.scrape("article.csv");
+    }
+    
+    public void scrape(String csvPath){
+        try {
+            MongoClientSettings settings = this.getSettings();
+            
             File input = new File("output.html");
             Document document = Jsoup.parse(input, "UTF-8", "");
             System.out.println("Success connected");
@@ -73,8 +81,8 @@ public class Scrapping {
             }
 
             // Write data to CSV file
-            File csvFile = new File("article.csv");
-            try (PrintWriter printWriter = new PrintWriter(csvFile, StandardCharsets.UTF_8)) {
+            File csvFile = new File(csvPath);
+            try (PrintWriter printWriter = new PrintWriter(csvFile)) {
                 printWriter.write('\ufeff');
                 List<String> row1 = new ArrayList<>();
                 row1.add("\"" + "Link" + "\"");
@@ -96,52 +104,9 @@ public class Scrapping {
                     printWriter.println(String.join(",", row));
                 }
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-    
-
-    static class Article {
-        private String title;
-        private String enroll_link;
-        private String author;
-        private String time;
-        private String tag;
-
-        public Article(String enroll_link, String title, String author, String time, String tag) {
-            this.title = title;
-            this.enroll_link = enroll_link;
-            this.author = author;
-            this.time = time;
-            this.tag = tag;
-        }
-
-        public Article(String enroll_link, String title, String author, String time) {
-            this.title = title;
-            this.enroll_link = enroll_link;
-            this.author = author;
-            this.time = time;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public String getEnrollLink() {
-            return enroll_link;
-        }
-
-        public String getAuthor() {
-            return author;
-        }
-
-        public String getTime() {
-            return time;
-        }
-
-        public String getTag() {
-            return tag;
         }
     }
 }
